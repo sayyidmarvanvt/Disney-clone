@@ -46,7 +46,7 @@ function Navbar() {
     <NavContainer>
       <LogoAndMenu>
         <Link to="/">
-          <Logo src="/src/assets/images/logoblue.png" alt="" />
+          <Logo src="\public\logoblue.png" alt="" />
         </Link>
 
         <MenuItems>
