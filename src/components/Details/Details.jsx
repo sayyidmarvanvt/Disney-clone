@@ -55,7 +55,7 @@ const Details = () => {
         </GroupWatchButton>
       </Controls>
       <SubTitle>
-        <ul>{detail.runtime} min</ul>
+        <li>{detail.runtime} min</li>
         <li>{detail.release_date}</li>
         <li>
           {detail.genres.map((genre, index) => (
@@ -150,7 +150,6 @@ const AddButton = styled.button`
   background-color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
   span {
-    margin-bottom: 5px;
     font-size: 30px;
     color: white;
   }

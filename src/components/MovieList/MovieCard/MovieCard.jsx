@@ -1,22 +1,42 @@
 import React from "react";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
 function MovieCard({ movie }) {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+
   const handleImageClick = (id) => {
     navigate(`/details/${id}`);
   };
+
   return (
-    <>
-      <img
+    <Card onClick={() => handleImageClick(movie.id)}>
+      <Image
         src={IMAGE_BASE_URL + movie.poster_path}
-        onClick={()=>handleImageClick(movie.id)}
-        className=" rounded-lg mt-2 hover:border-[2px] border-gray-400 cursor-pointer
-        hover:scale-110 transition-all duration-150 ease-in "
+        alt=""
       />
-    </>
+    </Card>
   );
 }
 
 export default MovieCard;
+
+const Card = styled.div`
+  margin-top: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    border: 2px solid #ccc;
+    transform: scale(1.05);
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  border-radius: 8px;
+`;

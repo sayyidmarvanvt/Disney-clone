@@ -1,26 +1,42 @@
 import React from "react";
+import styled from "styled-components";
 import GenresList from "../../Constant/GenresList";
 import MovieList from "./MovieList";
 
 function GenreMovieList() {
   return (
-    <div>
+    <Container>
       {GenresList.genere.map(
         (item, index) =>
           index <= 5 && (
-            <div key={index} className="pt-6 md:pt-8">
-              <h2
-                className="text-[20px] text-white 
-                font-bold"
-              >
-                {item.name}
-              </h2>
+            <GenreSection key={index}>
+              <GenreTitle>{item.name}</GenreTitle>
               <MovieList genreId={item.id} index_={index} />
-            </div>
+            </GenreSection>
           )
       )}
-    </div>
+    </Container>
   );
 }
 
 export default GenreMovieList;
+
+const Container = styled.div`
+  padding-top: 24px;
+  @media (min-width: 768px) {
+    padding-top: 32px;
+  }
+`;
+
+const GenreSection = styled.div`
+  padding-top: 24px;
+  @media (min-width: 768px) {
+    padding-top: 32px;
+  }
+`;
+
+const GenreTitle = styled.h2`
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+`;

@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import disney from "../../assets/images/disney.png";
 import marvel from "../../assets/images/marvel.png";
 import nationalG from "../../assets/images/nationalG.png";
@@ -13,56 +14,64 @@ import pixarV from "../../assets/Videos/pixar.mp4";
 
 function ProductionHouse() {
   const productionHouseList = [
-    {
-      id: 1,
-      image: disney,
-      video: disneyV,
-    },
-    {
-      id: 2,
-      image: pixar,
-      video: pixarV,
-    },
-    {
-      id: 3,
-      image: marvel,
-      video: marvelV,
-    },
-    {
-      id: 4,
-      image: starwar,
-      video: starwarV,
-    },
-    {
-      id: 5,
-      image: nationalG,
-      video: nationalGeographicV,
-    },
+    { id: 1, image: disney, video: disneyV },
+    { id: 2, image: pixar, video: pixarV },
+    { id: 3, image: marvel, video: marvelV },
+    { id: 4, image: starwar, video: starwarV },
+    { id: 5, image: nationalG, video: nationalGeographicV },
   ];
+
   return (
-    <div className="flex gap-2 md:gap-5 p-2 py-5 md:px-16 ">
+    <Container>
       {productionHouseList.map((item) => (
-        <div key={item.id}
-          className="border-[2px] border-gray-600
-            rounded-lg hover:scale-110 transition-all duration-300
-            ease-in-out cursor-pointer relative shadow-xl 
-            shadow-gray-800
-            "
-        >
-          <video
-            src={item.video}
-            autoPlay
-            loop
-            playsInline
-            muted
-            className="absolute z-0  top-0 rounded-md 
-            opacity-0 hover:opacity-50"
-          />
-          <img src={item.image} className="w-full z-[1] opacity-100" />
-        </div>
+        <ProductionHouseItem key={item.id}>
+          <Video src={item.video} autoPlay loop playsInline muted />
+          <Image src={item.image} />
+        </ProductionHouseItem>
       ))}
-    </div>
+    </Container>
   );
 }
 
 export default ProductionHouse;
+
+const Container = styled.div`
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px;
+  @media (min-width: 768px) {
+    gap: 20px;
+    padding: 20px 60px;
+  }
+`;
+
+const ProductionHouseItem = styled.div`
+  position: relative;
+  border: 2px solid gray;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+const Video = styled.video`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0;
+  z-index: 0;
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  border-radius: 10px;
+  z-index: 1;
+  opacity: 1;
+`;

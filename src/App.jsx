@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
+import React from 'react'
 import Home from "./components/Home";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Details from "./components/Details/Details";
@@ -15,3 +16,6 @@ function App() {
 }
 
 export default App;
+
+
+

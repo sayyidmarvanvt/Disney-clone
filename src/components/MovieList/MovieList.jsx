@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import GlobalApi from "../../Services/GlobalApi";
 import MovieCard from "./MovieCard/MovieCard";
 import HrMovieCard from "./MovieCard/HrMovieCard";
@@ -21,6 +21,7 @@ function MovieList({ genreId, index_ }) {
       setMovieList(resp.data.results);
     });
   };
+
   const handleImageClick = (id) => {
     navigate(`/details/${id.toString()}`);
   };
@@ -58,13 +59,13 @@ function MovieList({ genreId, index_ }) {
   return (
     <StyledSlider {...settings}>
       {movieList.map((item, index) => (
-        <div key={index} className=" p-3 scroll-smooth">
-          {index_ % 3 == 0 ? (
+        <CardWrapper key={index}>
+          {index_ % 3 === 0 ? (
             <HrMovieCard movie={item} />
           ) : (
             <MovieCard movie={item} />
           )}
-        </div>
+        </CardWrapper>
       ))}
     </StyledSlider>
   );
@@ -91,10 +92,16 @@ const StyledSlider = styled(Slider)`
   .slick-next {
     right: 15px;
   }
+
   @media (max-width: 330px) {
     .slick-prev,
     .slick-next {
       display: none !important;
     }
   }
+`;
+
+const CardWrapper = styled.div`
+  padding: 12px;
+  scroll-smooth: auto;
 `;

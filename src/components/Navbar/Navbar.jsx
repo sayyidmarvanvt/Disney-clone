@@ -8,7 +8,9 @@ import {
 } from "react-icons/hi2";
 import { HiPlus, HiDotsVertical } from "react-icons/hi";
 import NavbarItem from "./NavbarItem";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 function Navbar() {
   const [open, setOpen] = useState(false);
   const menu = [
@@ -41,28 +43,28 @@ function Navbar() {
     setOpen(!open);
   };
   return (
-    <div className=" flex items-center justify-between p-5 h-[70px] bg-[#090b13] ">
-      <div className="flex items-center gap-2 sm:gap-4 md:gap-8 ">
-        <Link to={"/"}>
-          <img src="\src\assets\images\logoblue.png" alt="" className="w-20 object-contain" />
+    <NavContainer>
+      <LogoAndMenu>
+        <Link to="/">
+          <Logo src="\src\assets\images\logoblue.png" alt="" />
         </Link>
 
-        <div className="hidden md:flex gap-8">
+        <MenuItems>
           {menu.map((item) => (
             <NavbarItem key={item.name} name={item.name} icon={item.icon} />
           ))}
-        </div>
-        <div className="flex  md:gap-8 items-center gap-6 md:hidden">
+        </MenuItems>
+        <MobileMenuItems>
           {menu.map(
             (item, index) =>
               index < 3 && (
                 <NavbarItem key={item.name} name={""} icon={item.icon} />
               )
           )}
-          <div className="md:hidden" onClick={Dropdown}>
+          <DropdownContainer onClick={Dropdown}>
             <NavbarItem name={""} icon={<HiDotsVertical />} />
-            {open ? (
-              <div className="absolute mt-3 bg-[#121212] border-[1px] border-gray-700  px-5 py-4 z-10">
+            {open && (
+              <DropdownMenu>
                 {menu.map(
                   (item, index) =>
                     index >= 3 && (
@@ -74,18 +76,87 @@ function Navbar() {
                       />
                     )
                 )}
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-      <img
+              </DropdownMenu>
+            )}
+          </DropdownContainer>
+        </MobileMenuItems>
+      </LogoAndMenu>
+      <UserAvatar
         src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
         alt=""
-        className="w-[40px] rounded-full object-contain"
       />
-    </div>
+    </NavContainer>
   );
 }
 
 export default Navbar;
+
+const NavContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+  height: 70px;
+  background-color: #090b13;
+`;
+
+const LogoAndMenu = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @media (min-width: 640px) {
+    gap: 16px;
+  }
+
+  @media (min-width: 768px) {
+    gap: 32px;
+  }
+`;
+
+
+
+const Logo = styled.img`
+  width: 80px;
+  object-fit: contain;
+`;
+
+const MenuItems = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 32px;
+  }
+`;
+
+const MobileMenuItems = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const DropdownContainer = styled.div`
+  position: relative;
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: #121212;
+  border: 1px solid #4b5563;
+  padding: 16px 20px;
+  z-index: 10;
+`;
+
+const UserAvatar = styled.img`
+  width: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+`;
