@@ -100,4 +100,7 @@ const StyledImage = styled.img`
     border-color: #f8fafc;
     border-width: 2px;
   }
+  @media (max-width:330px){
+    height:40vh;
+  }
 `;

@@ -43,6 +43,9 @@ const Container = styled.div`
     gap: 20px;
     padding: 20px 60px;
   }
+  @media (max-width:330px){
+    padding:30px 0;
+  }
 `;
 
 const ProductionHouseItem = styled.div`

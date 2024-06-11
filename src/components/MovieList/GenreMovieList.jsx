@@ -21,17 +21,15 @@ function GenreMovieList() {
 
 export default GenreMovieList;
 
-const Container = styled.div`
-  padding-top: 24px;
-  @media (min-width: 768px) {
-    padding-top: 32px;
-  }
-`;
+const Container = styled.div``;
 
 const GenreSection = styled.div`
   padding-top: 24px;
   @media (min-width: 768px) {
     padding-top: 32px;
+  }
+  @media (max-width: 330px) {
+    padding: 0;
   }
 `;
 
@@ -39,4 +37,7 @@ const GenreTitle = styled.h2`
   font-size: 20px;
   color: white;
   font-weight: bold;
+  @media (max-width: 330px) {
+    margin: 0;
+  }
 `;
