@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "../logo.png";
 import {
   HiHome,
   HiMagnifyingGlass,
@@ -45,7 +44,7 @@ function Navbar() {
     <div className=" flex items-center justify-between p-5 h-[70px] bg-[#090b13] ">
       <div className="flex items-center gap-2 sm:gap-4 md:gap-8 ">
         <Link to={"/"}>
-          <img src={logo} alt="" className="w-20 object-contain" />
+          <img src="\src\assets\images\logoblue.png" alt="" className="w-20 object-contain" />
         </Link>
 
         <div className="hidden md:flex gap-8">
