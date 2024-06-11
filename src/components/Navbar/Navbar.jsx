@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from "../../assets/images/logoblue.png"
 import {
   HiHome,
   HiMagnifyingGlass,
@@ -46,7 +47,7 @@ function Navbar() {
     <NavContainer>
       <LogoAndMenu>
         <Link to="/">
-          <Logo src="/public/logoblue.png" alt="" />
+          <Logo src={logo} alt="" />
         </Link>
 
         <MenuItems>

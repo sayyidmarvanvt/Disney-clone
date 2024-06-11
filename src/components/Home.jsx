@@ -2,7 +2,8 @@ import React from "react";
 import Carousel from "./Carousel/Carousel";
 import styled from "styled-components";
 import GenreMovieList from "./MovieList/GenreMovieList";
-import ProductionHouse from "./Production/ProductionHouse"
+import ProductionHouse from "./Production/ProductionHouse";
+import backgroundimg from "../assets/images/home-background.png"
 
 function Home() {
   return (
@@ -23,7 +24,7 @@ const Container = styled.div`
   overflow-x: hidden;
 
   &:before {
-    background: url("/src/assets/images/home-background.png") center center /
+    background: url(${backgroundimg}) center center /
       cover no-repeat fixed;
     content: "";
     position: absolute;
