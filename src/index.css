@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #040715;
+    margin:0;
+    color: white;
+  }
+
+  *{
+    box-sizing: border-box;
+  }
+
+
+/* import React, { useEffect, useState } from "react";
+import GlobalApi from "../Services/GlobalApi";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
+
+function Carousel() {
+  const [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    getTrendingVideos();
+  }, []);
+
+  const getTrendingVideos = async () => {
+    try {
+      await GlobalApi.getTrendingVideos.then((res) => {
+        console.log(res);
+        setMovieList(res.data.results);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+      className={className}
+      style={{
+        ...style,
+        display: window.innerWidth >= 768 ? "block" : "none",
+      }}
+      onClick={onClick}
+    />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+      className={className}
+      style={{
+        ...style,
+        display: window.innerWidth >= 768 ? "block" : "none", // Show on laptop screens
+      }}
+      onClick={onClick}
+    />
+    );
+  }
+
+  const settings = {
+    className: "center",
+    dots: false,
+    fade: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // autoplay: true,
+    // speed: 1000,
+    // autoplaySpeed: 2000,
+    cssEase: "linear",
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  return (
+    <div className="slider-container  px-4 md:px-16">
+      <Slider {...settings}>
+        {movieList.map((item, index) => (
+          <img
+            src={IMAGE_BASE_URL + item.backdrop_path}
+            alt=""
+            className="min-w-full md:h-[400px] object-fill"
+          />
+        ))}
+      </Slider>
+    </div>
+  );
+}
+
+export default Carousel; */
+/* 
+import React, { useEffect, useRef, useState } from "react";
+import GlobalApi from "../Services/GlobalApi";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+
+const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
+const screenwidth = window.innerWidth;
+
+function Carousel() {
+  const [movieList, setMovieList] = useState([]);
+  const elementRef = useRef();
+
+  useEffect(() => {
+    getTrendingVideos();
+  }, []);
+
+  const getTrendingVideos = async () => {
+    try {
+      await GlobalApi.getTrendingVideos.then((res) => {
+        console.log(res);
+        setMovieList(res.data.results);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const sliderRight = (e) => {
+    e.scrollLeft += window.innerWidth;
+  };
+  const sliderLeft = (e) => {
+    e.scrollLeft -= window.innerWidth;
+  };
+
+  return (
+    <div className="relative">
+      <div
+        className="flex overflow-x-auto w-full scrollbar-none scroll-smooth"
+        ref={elementRef}
+      >
+        {movieList.map((item, index) => (
+          <img
+            src={IMAGE_BASE_URL + item.backdrop_path}
+            alt=""
+            className="min-w-full sm:h-[310px] object-cover mr-5 rounded-md"
+          />
+        ))}
+        {/* <div className="absolute inset-0 flex justify-between items-center ">
+          <div className=" rounded-full p-1 shadow bg-white/40 text-gray-800 hover:bg-white">
+            <HiChevronLeft
+              className="  text-[30px] "
+              onClick={() => sliderLeft(elementRef.current)}
+            />
+          </div>
+          <div  className=" rounded-full p-1 shadow bg-white/40 text-gray-800 hover:bg-white">
+            <HiChevronRight
+              className="  text-[30px] "
+              onClick={() => sliderRight(elementRef.current)}
+            />
+          </div>
+         </div> 
+      </div>
+    </div>
+  );
+}
+
+export default Carousel; */ 
